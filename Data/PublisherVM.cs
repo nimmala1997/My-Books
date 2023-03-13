@@ -16,6 +16,12 @@ namespace my_books1.Data
 		public string Name { get; set; }
 		public List<string> Authors { get; set; }
 	}
+    public class PublisherbooksVM
+	{
+		public string Name { get; set; }
+		public List<string> Books { get; set; }
+
+	}
 
 }
 

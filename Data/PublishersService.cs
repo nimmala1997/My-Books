@@ -46,6 +46,26 @@ namespace my_books1.Data
 							}).FirstOrDefault();
 			return publisher;
 		}
+		public PublisherbooksVM GetBooks(int id)
+		{
+			var publisher = _context.Publishers.Where(x => x.Id == id)
+							 .Select(x => new PublisherbooksVM()
+							 {
+								 Name = x.Name,
+								 Books = x.Books.Select(x => x.Title).ToList()
+							 }).FirstOrDefault();
+
+			return publisher;
+		}
+		/*public List<string> Publisherbooks(int id)
+		{
+			var books = _context.Publishers.Where(x => x.Id == id)
+						.SelectMany(x => x.Books)
+						.Select(x => x.Title).ToList();
+
+			return books;
+		}*/
+
 		public bool CheckPublisher(PublisherVM publisherVM)
 		{
 			return (Regex.IsMatch(publisherVM.Name, @"^/d"));
